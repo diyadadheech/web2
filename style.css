@@ -1,28 +1,148 @@
-$(document).ready(function() {
-    $('#submitBtn').click(function() {
-        var name = $('#name').val();
-        var email = $('#email').val();
-        var phone = $('#phone').val();
-        var address = $('#address').val();
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
 
-        if (name && email && phone && address) {
-            // Submit the form via AJAX to process.php
-            $.post('process.php', {
-                name: name,
-                email: email,
-                phone: phone,
-                address: address
-            }, function(data) {
-                // Display the result from process.php
-                $('#output').html(data).show();
-            });
-        } else {
-            alert('Please fill all fields.');
-        }
-    });
+/* Container with gradient border */
+.container {
+    width: 50%;
+    margin: 50px auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 1s ease-in-out;
+}
 
-    $('#clearBtn').click(function() {
-        $('#registrationForm')[0].reset();
-        $('#output').hide();
-    });
-});
+.container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a1c4fd);
+    animation: rotateBg 8s linear infinite;
+    z-index: 0;
+    opacity: 0.7;
+}
+
+.container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: 15px;
+    background: inherit;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    mix-blend-mode: multiply;
+}
+
+.container > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Header */
+h1 {
+    text-align: center;
+    color: #444;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Labels */
+form label {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Input Fields */
+form input, form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 8px;
+    background: #f7f7f7;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+form input:focus, form textarea:focus {
+    outline: none;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(63, 81, 181, 0.5);
+}
+
+/* Buttons */
+button {
+    width: 48%;
+    padding: 12px;
+    margin: 5px 1%;
+    background: linear-gradient(135deg, #43cea2, #185a9d);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #185a9d, #43cea2);
+    transform: translateY(-5px);
+}
+
+/* Clear Button */
+#clearBtn {
+    background: linear-gradient(135deg, #ff6a6a, #d93434);
+}
+
+#clearBtn:hover {
+    background: linear-gradient(135deg, #d93434, #ff6a6a);
+}
+
+/* Result Box */
+#result {
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    color: #444;
+    display: none;
+}
+
+#result p {
+    margin: 5px 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes rotateBg {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
