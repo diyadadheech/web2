@@ -6,11 +6,16 @@ $(document).ready(function() {
         var address = $('#address').val();
 
         if (name && email && phone && address) {
-            $('#outputName').text(name);
-            $('#outputEmail').text(email);
-            $('#outputPhone').text(phone);
-            $('#outputAddress').text(address);
-            $('#output').show();
+            // Submit the form via AJAX to process.php
+            $.post('process.php', {
+                name: name,
+                email: email,
+                phone: phone,
+                address: address
+            }, function(data) {
+                // Display the result from process.php
+                $('#output').html(data).show();
+            });
         } else {
             alert('Please fill all fields.');
         }
