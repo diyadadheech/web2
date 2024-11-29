@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $address = htmlspecialchars(trim($_POST['address']));
 
         // Display the received data in a styled way
-        echo "<div style='background: #e9ecef; padding: 20px; border-radius: 10px; margin: 20px;'>";
+        echo "<div style='background: #ffe6f2; padding: 20px; border-radius: 10px; border: 2px solid #ff66cc; margin: 20px;'>";
         echo "<h3>🎉 Registration Successful!</h3>";
         echo "<p><strong>Name:</strong> $name</p>";
         echo "<p><strong>Email:</strong> $email</p>";
