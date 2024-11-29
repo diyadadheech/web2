@@ -3,47 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fancy Online Registration Form</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Online Registration Form</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h2>🎀 Register Now 🎀</h2>
+        <h1>Registration Form</h1>
         <form id="registrationForm">
-            <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" placeholder="Enter your name" required>
-            </div>
-
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email" required>
-            </div>
-
-            <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="text" id="phone" name="phone" placeholder="Enter your phone number" required>
-            </div>
-
-            <div class="form-group">
-                <label for="address">Address</label>
-                <textarea id="address" name="address" placeholder="Enter your address" required></textarea>
-            </div>
-
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" required>
+            
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" required></textarea>
+            
             <button type="button" id="submitBtn">Submit</button>
             <button type="button" id="clearBtn">Clear</button>
         </form>
+        <div id="result" style="display: none;">
+            <h2>Submitted Information</h2>
+            <p id="resultName"></p>
+            <p id="resultEmail"></p>
+            <p id="resultPhone"></p>
+            <p id="resultAddress"></p>
+        </div>
     </div>
-
-    <div id="output" style="display: none;">
-        <h2>🎉 Submitted Information 🎉</h2>
-        <p><strong>Name:</strong> <span id="outputName"></span></p>
-        <p><strong>Email:</strong> <span id="outputEmail"></span></p>
-        <p><strong>Phone:</strong> <span id="outputPhone"></span></p>
-        <p><strong>Address:</strong> <span id="outputAddress"></span></p>
-    </div>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
