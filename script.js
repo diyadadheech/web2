@@ -6,21 +6,11 @@ $(document).ready(function() {
         var address = $('#address').val();
 
         if (name && email && phone && address) {
-            // Submit the form via AJAX to process.php
-            $.ajax({
-                url: 'process.php',
-                type: 'post',
-                data: {
-                    name: name,
-                    email: email,
-                    phone: phone,
-                    address: address
-                },
-                success: function(data) {
-                    // Display the result from process.php
-                    $('#output').html(data).show();
-                }
-            });
+            $('#resultName').text('Name: ' + name);
+            $('#resultEmail').text('Email: ' + email);
+            $('#resultPhone').text('Phone: ' + phone);
+            $('#resultAddress').text('Address: ' + address);
+            $('#result').show();
         } else {
             alert('Please fill all fields.');
         }
@@ -28,6 +18,6 @@ $(document).ready(function() {
 
     $('#clearBtn').click(function() {
         $('#registrationForm')[0].reset();
-        $('#output').hide();
+        $('#result').hide();
     });
 });
