@@ -1,25 +1,25 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Debugging: Output the received data
-    echo "<h3>Data Received:</h3>";
-    echo "<pre>";
-    print_r($_POST); // This will display all received POST data
-    echo "</pre>";
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Check if all required fields are received
+    if (isset($_POST['name'], $_POST['email'], $_POST['phone'], $_POST['address'])) {
+        
+        // Sanitize input data to prevent XSS attacks
+        $name = htmlspecialchars(trim($_POST['name']));
+        $email = htmlspecialchars(trim($_POST['email']));
+        $phone = htmlspecialchars(trim($_POST['phone']));
+        $address = htmlspecialchars(trim($_POST['address']));
 
-    // Extract form data
-    $name = htmlspecialchars($_POST['name']);
-    $email = htmlspecialchars($_POST['email']);
-    $phone = htmlspecialchars($_POST['phone']);
-    $address = htmlspecialchars($_POST['address']);
-
-    // Display formatted data
-    echo "<h3>Formatted Data:</h3>";
-    echo "<p><strong>Name:</strong> $name</p>";
-    echo "<p><strong>Email:</strong> $email</p>";
-    echo "<p><strong>Phone Number:</strong> $phone</p>";
-    echo "<p><strong>Address:</strong> $address</p>";
+        // Display the received data in a styled way
+        echo "<h3>🎉 Registration Successful!</h3>";
+        echo "<p><strong>Name:</strong> $name</p>";
+        echo "<p><strong>Email:</strong> $email</p>";
+        echo "<p><strong>Phone:</strong> $phone</p>";
+        echo "<p><strong>Address:</strong> $address</p>";
+    } else {
+        echo "<h3>❌ Missing Required Fields</h3>";
+    }
 } else {
-    echo "<h3>Invalid Request</h3>";
-    echo "<p>This endpoint only accepts POST requests.</p>";
+    echo "<h3>❌ Invalid Request Method</h3>";
+    echo "<p>This page only accepts POST requests.</p>";
 }
 ?>
