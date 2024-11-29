@@ -9,6 +9,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $phone = htmlspecialchars(trim($_POST['phone']));
         $address = htmlspecialchars(trim($_POST['address']));
 
+        // Prepare the data to be stored
+        $data = "Name: $name\nEmail: $email\nPhone: $phone\nAddress: $address\n\n";
+
+        // Append the data to a file
+        file_put_contents('submissions.txt', $data, FILE_APPEND);
+
         // Display the received data in a styled way
         echo "<div style='background: #ffe6f2; padding: 20px; border-radius: 10px; border: 2px solid #ff66cc; margin: 20px;'>";
         echo "<h3>🎉 Registration Successful!</h3>";
