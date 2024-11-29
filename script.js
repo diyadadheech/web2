@@ -5,7 +5,7 @@ $(document).ready(function() {
         var phone = $('#phone').val();
         var address = $('#address').val();
 
-        if(name && email && phone && address) {
+        if (name && email && phone && address) {
             $('#resultName').text('Name: ' + name);
             $('#resultEmail').text('Email: ' + email);
             $('#resultPhone').text('Phone: ' + phone);
@@ -14,5 +14,10 @@ $(document).ready(function() {
         } else {
             alert('Please fill all fields.');
         }
+    });
+
+    $('#clearBtn').click(function() {
+        $('#registrationForm')[0].reset();
+        $('#result').hide();
     });
 });
