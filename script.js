@@ -7,14 +7,19 @@ $(document).ready(function() {
 
         if (name && email && phone && address) {
             // Submit the form via AJAX to process.php
-            $.post('process.php', {
-                name: name,
-                email: email,
-                phone: phone,
-                address: address
-            }, function(data) {
-                // Display the result from process.php
-                $('#output').html(data).show();
+            $.ajax({
+                url: 'process.php',
+                type: 'post',
+                data: {
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    address: address
+                },
+                success: function(data) {
+                    // Display the result from process.php
+                    $('#output').html(data).show();
+                }
             });
         } else {
             alert('Please fill all fields.');
