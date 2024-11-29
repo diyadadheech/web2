@@ -31,11 +31,18 @@
                 <textarea id="address" name="address" placeholder="Enter your address" required></textarea>
             </div>
 
-            <button type="submit">Submit</button>
+            <button type="button" id="submitBtn">Submit</button>
+            <button type="button" id="clearBtn">Clear</button>
         </form>
     </div>
 
-    <div id="output"></div>
+    <div id="output" style="display: none;">
+        <h2>Submitted Information</h2>
+        <p><strong>Name:</strong> <span id="outputName"></span></p>
+        <p><strong>Email:</strong> <span id="outputEmail"></span></p>
+        <p><strong>Phone:</strong> <span id="outputPhone"></span></p>
+        <p><strong>Address:</strong> <span id="outputAddress"></span></p>
+    </div>
 
     <script src="script.js"></script>
 </body>
