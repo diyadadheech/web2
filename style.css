@@ -1,70 +1,28 @@
-body {
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    background: linear-gradient(to right, #ffcccc, #ff99cc);
-    margin: 0;
-    padding: 0;
-    color: #333;
-}
-.container {
-    width: 50%;
-    margin: 50px auto;
-    background: #fff;
-    padding: 20px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    border: 2px solid #ff66cc;
-}
-h2 {
-    text-align: center;
-    color: #ff66cc;
-}
-.form-group {
-    margin-bottom: 15px;
-}
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #ff66cc;
-    font-weight: bold;
-}
-.form-group input, .form-group textarea {
-    width: 100%;
-    padding: 10px;
-    border: 2px solid #ff66cc;
-    border-radius: 5px;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-    background: #ffe6f2;
-}
-button {
-    width: 48%;
-    padding: 10px;
-    margin: 5px 1%;
-    background: #ff66cc;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-button:hover {
-    background: #e55bb5;
-}
-#clearBtn {
-    background: #ff99cc;
-}
-#clearBtn:hover {
-    background: #e28bad;
-}
-#output {
-    margin-top: 20px;
-    padding: 20px;
-    background: #ffe6f2;
-    border-radius: 10px;
-    border: 2px solid #ff66cc;
-}
-#output p {
-    margin: 10px 0;
-    color: #ff66cc;
-    font-weight: bold;
-}
+$(document).ready(function() {
+    $('#submitBtn').click(function() {
+        var name = $('#name').val();
+        var email = $('#email').val();
+        var phone = $('#phone').val();
+        var address = $('#address').val();
+
+        if (name && email && phone && address) {
+            // Submit the form via AJAX to process.php
+            $.post('process.php', {
+                name: name,
+                email: email,
+                phone: phone,
+                address: address
+            }, function(data) {
+                // Display the result from process.php
+                $('#output').html(data).show();
+            });
+        } else {
+            alert('Please fill all fields.');
+        }
+    });
+
+    $('#clearBtn').click(function() {
+        $('#registrationForm')[0].reset();
+        $('#output').hide();
+    });
+});
