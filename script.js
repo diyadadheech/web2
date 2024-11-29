@@ -1,20 +1,23 @@
-$(document).ready(function () {
-    $("#registrationForm").submit(function (e) {
-        e.preventDefault();
+$(document).ready(function() {
+    $('#submitBtn').click(function() {
+        var name = $('#name').val();
+        var email = $('#email').val();
+        var phone = $('#phone').val();
+        var address = $('#address').val();
 
-        var formData = $(this).serialize();
+        if (name && email && phone && address) {
+            $('#outputName').text(name);
+            $('#outputEmail').text(email);
+            $('#outputPhone').text(phone);
+            $('#outputAddress').text(address);
+            $('#output').show();
+        } else {
+            alert('Please fill all fields.');
+        }
+    });
 
-        $.ajax({
-            type: "POST",
-            url: "process.php",
-            data: formData,
-            success: function (response) {
-                $("#output").html(response).fadeIn(500);
-                $("#registrationForm")[0].reset();
-            },
-            error: function () {
-                alert("Something went wrong. Please try again.");
-            }
-        });
+    $('#clearBtn').click(function() {
+        $('#registrationForm')[0].reset();
+        $('#output').hide();
     });
 });
